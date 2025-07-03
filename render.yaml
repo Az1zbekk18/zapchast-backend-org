@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: zapchast-backend
+    env: python
+    buildCommand: ""
+    startCommand: gunicorn zapchast.wsgi
+    envVars:
+      - key: DJANGO_SETTINGS_MODULE
+        value: zapchast.settings
+      - key: SECRET_KEY
+        value: some_random_secret_key
+      - key: ALLOWED_HOSTS
+        value: '*'
