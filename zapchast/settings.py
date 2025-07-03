@@ -1,13 +1,14 @@
 from pathlib import Path
+import dj_database_url
+import os
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = 'django-insecure-+xl*_jm7=f)cgqi%hr=8x-l&)$ps*su@k95o_^h-ab)qiwu$vy'
+SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-+xl*_jm7=f)cgqi%hr=8x-l&)$ps*su@k95o_^h-ab)qiwu$vy')
 
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
-
+ALLOWED_HOSTS = ['zapchast-backend-org-production.up.railway.app', 'localhost', '127.0.0.1', '*']  # Sinov uchun kengaytirildi
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -51,10 +52,7 @@ TEMPLATES = [
 WSGI_APPLICATION = 'zapchast.wsgi.application'
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+    'default': dj_database_url.config(default=os.environ.get('DATABASE_URL'))
 }
 
 AUTH_PASSWORD_VALIDATORS = [
@@ -93,5 +91,3 @@ REST_FRAMEWORK = {
         'django_filters.rest_framework.DjangoFilterBackend',
     ]
 }
-
-
