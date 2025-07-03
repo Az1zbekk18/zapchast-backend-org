@@ -1,1 +1,1 @@
-web: gunicorn Zapchast.wsgi
+web: gunicorn zapchast.wsgi
