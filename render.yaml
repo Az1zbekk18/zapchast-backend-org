@@ -1,8 +1,11 @@
+build:
+  pythonVersion: 3.11
+
 services:
   - type: web
     name: zapchast-backend
     env: python
-    buildCommand: ""
+    buildCommand: pip install -r requirements.txt
     startCommand: gunicorn zapchast.wsgi
     envVars:
       - key: DJANGO_SETTINGS_MODULE
