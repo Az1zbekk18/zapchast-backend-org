@@ -1,14 +1,16 @@
 from pathlib import Path
+from decouple import config
 import dj_database_url
 import os
 from dotenv import load_dotenv
 load_dotenv()
 
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-+xl*_jm7=f)cgqi%hr=8x-l&)$ps*su@k95o_^h-ab)qiwu$vy')
 
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['zapchast-backend-org-production.up.railway.app', 'localhost', '127.0.0.1', '*']  # Sinov uchun kengaytirildi
 
@@ -90,9 +92,17 @@ REST_FRAMEWORK = {
     ]
 }
 
+
 DATABASES = {
-    'default': dj_database_url.config(conn_max_age=600)
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / "db.sqlite3",
+    }
 }
+
+
+BASE_URL = config('BASE_URL', default='http://localhost:8000/api/')
+
 
 
 
