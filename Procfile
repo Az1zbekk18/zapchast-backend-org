@@ -1,1 +1,1 @@
-web: gunicorn zapchast-backend-org.wsgi --log-file - --workers 2 --threads 4 --timeout 120
+web: gunicorn zapchast.wsgi --log-file - --workers 2 --threads 4 --timeout 120
