@@ -6,7 +6,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-+xl*_jm7=f)cgqi%hr=8x-l&)$ps*su@k95o_^h-ab)qiwu$vy')
 
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['zapchast-backend-org-production.up.railway.app', 'localhost', '127.0.0.1', '*']  # Sinov uchun kengaytirildi
 
@@ -51,10 +51,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'zapchast.wsgi.application'
 
-DATABASES = {
-    'default': dj_database_url.config(default=os.environ.get('DATABASE_URL'))
-}
-
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
@@ -91,3 +87,16 @@ REST_FRAMEWORK = {
         'django_filters.rest_framework.DjangoFilterBackend',
     ]
 }
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'zapchast_db',
+        'USER': 'zapuser',
+        'PASSWORD': 'user1',
+        'HOST': 'localhost',
+        'PORT': '5432',
+    }
+}
+
+

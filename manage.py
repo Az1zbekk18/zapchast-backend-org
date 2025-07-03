@@ -1,5 +1,5 @@
-#!/usr/bin/env python
-"""Django's command-line utility for administrative tasks."""
+import dotenv
+dotenv.load_dotenv()
 import os
 import sys
 
